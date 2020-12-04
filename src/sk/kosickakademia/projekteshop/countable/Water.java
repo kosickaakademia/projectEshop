@@ -1,6 +1,7 @@
 package sk.kosickakademia.projekteshop.countable;
 
 import sk.kosickakademia.projekteshop.Item;
+import sk.kosickakademia.projekteshop.util.Util;
 
 public class Water extends Item implements CountItem{
     private int count;
@@ -11,11 +12,16 @@ public class Water extends Item implements CountItem{
 
     @Override
     public int getCount() {
-        return 0;
+        return count;
     }
 
     @Override
     public double getItemPrice() {
-        return 0;
+        return getPrice()*count;
+    }
+    @Override
+    public String toString() {
+        return "Water: "+getName()+" , Price per kg : "+getPrice()+" , "+
+                " Count: "+count + " , Price: "+ Util.formatPrice(getItemPrice());
     }
 }
