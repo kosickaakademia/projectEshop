@@ -25,7 +25,7 @@ public class Main {
         cart.addItem(item3);
         cart.addItem(item4);
 
-        double totalPrice=0;
+        double totalPrice= cart.getTotalPrice();
 
         cart.printCart();
         System.out.println("Do you have any coupon (y/n) ?");
