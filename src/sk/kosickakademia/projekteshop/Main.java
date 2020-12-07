@@ -2,8 +2,13 @@ package sk.kosickakademia.projekteshop;
 
 import sk.kosickakademia.projekteshop.cart.Cart;
 import sk.kosickakademia.projekteshop.countable.Water;
+import sk.kosickakademia.projekteshop.coupon.Coupon;
+import sk.kosickakademia.projekteshop.coupon.Reader;
 import sk.kosickakademia.projekteshop.uncountable.Apple;
 import sk.kosickakademia.projekteshop.util.Util;
+
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -20,8 +25,29 @@ public class Main {
         cart.addItem(item3);
         cart.addItem(item4);
 
+        double totalPrice=0;
+
         cart.printCart();
-        System.out.println("\nTotal price : "+cart.getTotalPrice());
+        System.out.println("Do you have any coupon (y/n) ?");
+        Scanner scanner = new Scanner(System.in);
+        String coupon;
+        String input = scanner.nextLine().toLowerCase();
+        if(input.charAt(0)=='y'){
+            System.out.println("Enter coupon code: ");
+            coupon = scanner.nextLine();
+            List<Coupon> list = Reader.getListOfCouponsFromFile();
+            totalPrice = cart.getTotalPrice();
+            for(Coupon temp:list){
+                if(temp.getCode().equalsIgnoreCase(coupon)){
+                    System.out.println("Coupon is valid");
+                    totalPrice=totalPrice*(1-(double)temp.getValue()/100);
+                    list.remove(temp);
+                    break;
+                }
+            }
+            Reader.updateCoupons(list);
+        }
+        System.out.println("\nTotal price : "+totalPrice);
         System.out.println("( Information price in SKK: "+ Util.convertEurToSkk(cart.getTotalPrice())+ " )");
     }
 
