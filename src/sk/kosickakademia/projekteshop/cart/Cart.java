@@ -19,10 +19,32 @@ public class Cart {
     public void addItem(Item newItem){
         if(newItem.getPrice()>=0){
             if(newItem instanceof CountItem && ((CountItem) newItem).getCount()>0){
-                list.add(newItem);
+                boolean isAlreatyInCart=false;
+                for(Item temp: list){
+                    if(temp.getName().equalsIgnoreCase(newItem.getName()) &&
+                            temp.getPrice()==newItem.getPrice()){
+                        ((CountItem)temp).setCount(((CountItem) temp).getCount() +
+                                ((CountItem) newItem).getCount());
+                        isAlreatyInCart=true;
+                        break;
+                    }
+                }
+                if(isAlreatyInCart==false)
+                    list.add(newItem);
             }
             if(newItem instanceof WeightItem && ((WeightItem) newItem).getWeight()>0){
-                list.add(newItem);
+                boolean isAlreatyInCart=false;
+                for(Item temp: list){
+                    if(temp.getName().equalsIgnoreCase(newItem.getName()) &&
+                    temp.getPrice()==newItem.getPrice()){
+                        ((WeightItem)temp).setWeight(((WeightItem) temp).getWeight() +
+                                ((WeightItem) newItem).getWeight());
+                        isAlreatyInCart=true;
+                    break;
+                    }
+                }
+                if(isAlreatyInCart==false)
+                    list.add(newItem);
             }
             if(newItem instanceof ServiceInterface){
                 list.add(newItem);

@@ -17,15 +17,24 @@ public class Main {
         Cart cart = new Cart();
 
         Apple item1=new Apple(1.09, "Golden",1.5);
-        Item item2=new Water(-0.49, "Budis jemne perliva",60);
+        Apple item5=new Apple(1.60, "Idared",2.3);
+        Item item2=new Water(0.49, "Budis jemne perliva",6);
+        Item item8=new Water(0.49, "Budis jemne perliva",4);
         Water item3=new Water(1.79, "Orange juice",2);
-        Item item4 = new Apple(0,"red apple",50.855);
+        Item item4 = new Apple(1.0,"red apple",5.2);
+        Apple item6=new Apple(1.09, "Golden",0.54);
+        Apple item7=new Apple(1.19, "Golden",1);
+
         Item delivery = new Delivery(2.99);
 
         cart.addItem(item1);
         cart.addItem(item2);
         cart.addItem(item3);
         cart.addItem(item4);
+        cart.addItem(item5);
+        cart.addItem(item6);
+        cart.addItem(item7);
+        cart.addItem(item8);
         cart.addItem(delivery);
 
         double totalPrice= cart.getTotalPrice();

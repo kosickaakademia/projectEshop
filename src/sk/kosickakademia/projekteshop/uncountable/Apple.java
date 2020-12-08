@@ -17,6 +17,11 @@ public class Apple extends Item implements WeightItem {
     }
 
     @Override
+    public void setWeight(double w) {
+        this.weight=w;
+    }
+
+    @Override
     public double getItemPrice() {
         return weight*getPrice();
     }

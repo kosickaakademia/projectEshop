@@ -16,6 +16,11 @@ public class Water extends Item implements CountItem{
     }
 
     @Override
+    public void setCount(int c) {
+        this.count=c;
+    }
+
+    @Override
     public double getItemPrice() {
         return getPrice()*count;
     }
