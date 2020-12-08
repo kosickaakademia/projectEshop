@@ -1,6 +1,9 @@
 package sk.kosickakademia.projekteshop.cart;
 
 import sk.kosickakademia.projekteshop.Item;
+import sk.kosickakademia.projekteshop.countable.CountItem;
+import sk.kosickakademia.projekteshop.service.ServiceInterface;
+import sk.kosickakademia.projekteshop.uncountable.WeightItem;
 import sk.kosickakademia.projekteshop.util.Util;
 
 import java.util.ArrayList;
@@ -12,8 +15,20 @@ public class Cart {
     public Cart() {
         list = new ArrayList<>();
     }
+
     public void addItem(Item newItem){
-        list.add(newItem);
+        if(newItem.getPrice()>=0){
+            if(newItem instanceof CountItem && ((CountItem) newItem).getCount()>0){
+                list.add(newItem);
+            }
+            if(newItem instanceof WeightItem && ((WeightItem) newItem).getWeight()>0){
+                list.add(newItem);
+            }
+            if(newItem instanceof ServiceInterface){
+                list.add(newItem);
+            }
+        }
+
     }
     public int getCountOfItemsInCart(){
         return list.size();

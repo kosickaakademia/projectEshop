@@ -4,6 +4,7 @@ import sk.kosickakademia.projekteshop.cart.Cart;
 import sk.kosickakademia.projekteshop.countable.Water;
 import sk.kosickakademia.projekteshop.coupon.Coupon;
 import sk.kosickakademia.projekteshop.coupon.Reader;
+import sk.kosickakademia.projekteshop.service.Delivery;
 import sk.kosickakademia.projekteshop.uncountable.Apple;
 import sk.kosickakademia.projekteshop.util.Util;
 
@@ -16,14 +17,16 @@ public class Main {
         Cart cart = new Cart();
 
         Apple item1=new Apple(1.09, "Golden",1.5);
-        Item item2=new Water(0.49, "Budis jemne perliva",6);
+        Item item2=new Water(-0.49, "Budis jemne perliva",60);
         Water item3=new Water(1.79, "Orange juice",2);
-        Item item4 = new Apple(0.6,"red apple",0.855);
+        Item item4 = new Apple(0,"red apple",50.855);
+        Item delivery = new Delivery(2.99);
 
         cart.addItem(item1);
         cart.addItem(item2);
         cart.addItem(item3);
         cart.addItem(item4);
+        cart.addItem(delivery);
 
         double totalPrice= cart.getTotalPrice();
 
